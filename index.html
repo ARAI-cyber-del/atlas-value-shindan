@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas Value | 商品開発 判断品質診断</title>
+<style>
+  :root{
+    --navy:#1F3864;
+    --blue:#2E75B6;
+    --lightblue:#EAF2F8;
+    --gray:#666666;
+    --border:#DDE3EA;
+    --bg:#FAFBFC;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Yu Gothic","Hiragino Sans",sans-serif;
+    background:var(--bg);
+    color:#222;
+    line-height:1.7;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:32px 20px 80px;
+  }
+  header.top{
+    text-align:center;
+    margin-bottom:8px;
+  }
+  header.top .brand{
+    font-size:14px;
+    letter-spacing:2px;
+    color:var(--blue);
+    font-weight:bold;
+  }
+  header.top h1{
+    font-size:24px;
+    color:var(--navy);
+    margin:6px 0 0;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px 24px;
+    margin-top:24px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.03);
+  }
+  .lead{
+    color:#444;
+    font-size:15px;
+  }
+  .lead strong{color:var(--navy);}
+  button{
+    font-family:inherit;
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    font-size:15px;
+    padding:12px 22px;
+  }
+  .btn-primary{
+    background:var(--navy);
+    color:#fff;
+  }
+  .btn-primary:hover{background:var(--blue);}
+  .btn-secondary{
+    background:#fff;
+    color:var(--navy);
+    border:1px solid var(--navy);
+  }
+  .btn-row{
+    display:flex;
+    justify-content:space-between;
+    margin-top:28px;
+    gap:12px;
+  }
+  .progress-outer{
+    height:6px;
+    background:var(--border);
+    border-radius:3px;
+    overflow:hidden;
+    margin:20px 0 4px;
+  }
+  .progress-inner{
+    height:100%;
+    background:var(--blue);
+    width:0%;
+    transition:width .3s;
+  }
+  .progress-label{
+    font-size:12px;
+    color:var(--gray);
+    text-align:right;
+  }
+  .axis-title{
+    color:var(--navy);
+    font-size:19px;
+    margin:0 0 4px;
+  }
+  .axis-desc{
+    color:var(--gray);
+    font-size:13px;
+    margin-bottom:20px;
+  }
+  .question{
+    margin-bottom:26px;
+  }
+  .question p{
+    font-size:15px;
+    margin:0 0 10px;
+    color:#222;
+  }
+  .scale{
+    display:flex;
+    justify-content:space-between;
+    gap:6px;
+  }
+  .scale label{
+    flex:1;
+    text-align:center;
+    font-size:11px;
+    color:var(--gray);
+  }
+  .scale-opt{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .scale-opt input{
+    width:20px;height:20px;
+    accent-color:var(--blue);
+  }
+  .hidden{display:none;}
+  .type-name{
+    font-size:26px;
+    color:var(--navy);
+    text-align:center;
+    margin:4px 0 6px;
+  }
+  .type-sub{
+    text-align:center;
+    color:var(--gray);
+    font-size:13px;
+    margin-bottom:18px;
+  }
+  .score-big{
+    text-align:center;
+    font-size:15px;
+    color:#444;
+    margin-bottom:24px;
+  }
+  .score-big span{
+    font-size:34px;
+    color:var(--blue);
+    font-weight:bold;
+  }
+  .bar-row{
+    margin-bottom:14px;
+  }
+  .bar-row .label-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    margin-bottom:4px;
+    color:#333;
+  }
+  .bar-outer{
+    height:10px;
+    background:var(--lightblue);
+    border-radius:5px;
+    overflow:hidden;
+  }
+  .bar-inner{
+    height:100%;
+    background:var(--blue);
+    border-radius:5px;
+    width:0%;
+    transition:width .6s;
+  }
+  .bar-inner.weak{background:#C0504D;}
+  .weak-box{
+    background:var(--lightblue);
+    border-left:4px solid var(--blue);
+    padding:16px 18px;
+    border-radius:6px;
+    margin-top:24px;
+    font-size:14px;
+  }
+  .weak-box strong{color:var(--navy);}
+  .cta-box{
+    margin-top:28px;
+    text-align:center;
+  }
+  .cta-box p{
+    font-size:13px;
+    color:var(--gray);
+    margin-bottom:14px;
+  }
+  .cta-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .cta-buttons a{
+    display:block;
+    text-decoration:none;
+    padding:13px;
+    border-radius:6px;
+    font-size:14px;
+  }
+  .cta-main{background:var(--navy);color:#fff;}
+  .cta-sub{background:#fff;color:var(--navy);border:1px solid var(--navy);}
+  footer.credit{
+    text-align:center;
+    color:#999;
+    font-size:11px;
+    margin-top:40px;
+  }
+  .retake{
+    display:block;
+    margin:18px auto 0;
+    background:none;
+    color:var(--gray);
+    font-size:12px;
+    text-decoration:underline;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">ATLAS VALUE</div>
+    <h1>商品開発 判断品質診断</h1>
+  </header>
+
+  <section id="screen-intro" class="card">
+    <p class="lead">
+      良い商品を作れば売れる — その思い込みが、実は一番危険です。<br><br>
+      商品開発がうまくいくかどうかは、<strong>商品そのものの良し悪し</strong>ではなく、<br>
+      その手前にある<strong>「判断の質」</strong>で決まります。<br><br>
+      この診断では、「何を作るか」「何を作らないか」「品質基準」「OEM選定」「撤退判断」「社内コンセンサス形成」の6つの軸から、
+      あなたの会社・チームの商品開発における判断品質を可視化します。<br><br>
+      所要時間は約3分、24の質問に5段階で答えるだけです。
+    </p>
+    <div class="btn-row" style="justify-content:center;">
+      <button class="btn-primary" onclick="startQuiz()">診断をはじめる</button>
+    </div>
+  </section>
+
+  <section id="screen-quiz" class="card hidden">
+    <div class="progress-outer"><div class="progress-inner" id="progress-inner"></div></div>
+    <div class="progress-label" id="progress-label"></div>
+    <h2 class="axis-title" id="axis-title"></h2>
+    <p class="axis-desc" id="axis-desc"></p>
+    <div id="question-list"></div>
+    <div class="btn-row">
+      <button class="btn-secondary" id="btn-prev" onclick="prevAxis()">戻る</button>
+      <button class="btn-primary" id="btn-next" onclick="nextAxis()">次へ</button>
+    </div>
+  </section>
+
+  <section id="screen-result" class="card hidden">
+    <div class="type-name" id="result-type"></div>
+    <div class="type-sub" id="result-tagline"></div>
+    <p class="lead" id="result-desc" style="text-align:center;"></p>
+
+    <div class="score-big">
+      総合判断品質スコア　<span id="result-score"></span> / 100
+    </div>
+
+    <div id="bar-chart"></div>
+
+    <div class="weak-box" id="weak-box"></div>
+
+    <div class="cta-box">
+      <p>羅針盤は、答えを教えません。ただ、正しい方向を示すだけです。<br>次の一歩を、一緒に考えませんか。</p>
+      <div class="cta-buttons">
+        <a class="cta-main" href="mailto:yaraiyarai409@gmail.com?subject=判断品質診断を受けました" target="_blank">Atlas Valueに相談する(コンサル問い合わせ)</a>
+        <a class="cta-sub" href="#" id="note-link" target="_blank">noteで「価値の種」の見つけ方を読む</a>
+        <a class="cta-sub" href="#" id="visasq-link" target="_blank">ビザスクで新井義信に相談する</a>
+      </div>
+    </div>
+
+    <button class="retake" onclick="location.reload()">もう一度診断する</button>
+  </section>
+
+  <footer class="credit">Atlas Value &mdash; 商品開発の判断品質を高める</footer>
+</div>
+
+<script>
+const AXES = [
+  {
+    key: "make",
+    title: "何を作るか",
+    desc: "商品コンセプトを判断する力",
+    questions: [
+      "新商品のアイデアが出たとき、「誰が・なぜ欲しいのか」を言語化してから開発に進めている",
+      "企画は思いつきや社内の流行だけでなく、根拠を持ってスタートしている",
+      "市場に眠る「価値の種」を、企画者以外の視点でも検証している",
+      "「なぜ今この商品を作るのか」を、社内で明確に説明できる"
+    ]
+  },
+  {
+    key: "notmake",
+    title: "何を作らないか",
+    desc: "着手を止める・絞り込む判断力",
+    questions: [
+      "自社の強みと合わない企画は、着手前に止める判断ができている",
+      "「作れるから作る」ではなく「作るべきか」を毎回問い直している",
+      "一度動き出した企画でも、違和感があれば立ち止まる文化がある",
+      "却下した企画について、却下した基準を言語化できている"
+    ]
+  },
+  {
+    key: "quality",
+    title: "どこまで品質を求めるか",
+    desc: "品質基準を設計する判断力",
+    questions: [
+      "商品ごとに必要な品質基準を、着手前に決めている",
+      "品質基準は、コストや納期とのバランスで現実的に設定している",
+      "過剰品質(オーバースペック)になっていないか、定期的に点検している",
+      "品質基準について、開発・営業・経営の認識がずれていない"
+    ]
+  },
+  {
+    key: "oem",
+    title: "OEMをどう選ぶか",
+    desc: "外部パートナーを選定する判断力",
+    questions: [
+      "OEM先を選ぶ際、価格だけでなく品質管理体制やコミュニケーション力も評価している",
+      "OEM先との役割分担(何を任せ、何を自社で担うか)が明確になっている",
+      "契約前に、複数のOEM候補を比較検討するプロセスがある",
+      "OEM先とのトラブル発生時の対応を、事前に想定できている"
+    ]
+  },
+  {
+    key: "exit",
+    title: "撤退判断",
+    desc: "やめる・引く判断力",
+    questions: [
+      "商品を投入する前に、「どうなったら撤退するか」の基準を決めている",
+      "反応が悪いとき、感情ではなく事前に決めた基準で撤退を判断できている",
+      "撤退の判断が、「もったいない」という心理で先延ばしにされていない",
+      "撤退した商品・企画から学びを次に活かす仕組みがある"
+    ]
+  },
+  {
+    key: "consensus",
+    title: "社内コンセンサス形成",
+    desc: "組織として判断を support する力",
+    questions: [
+      "商品開発の判断について、関係者間で納得感のある合意形成ができている",
+      "反対意見や懸念点を、意思決定の前にきちんと拾い上げている",
+      "経営層と現場の間で、商品開発の方向性についての認識がずれていない",
+      "一度決めた判断について、後から「言った言わない」の対立が起きにくい"
+    ]
+  }
+];
+
+const SCALE_LABELS = ["全くそう思わない","あまりそう思わない","どちらともいえない","ややそう思う","非常にそう思う"];
+
+let current = 0;
+const answers = AXES.map(function(a){ return new Array(a.questions.length).fill(null); });
+
+function startQuiz(){
+  document.getElementById("screen-intro").classList.add("hidden");
+  document.getElementById("screen-quiz").classList.remove("hidden");
+  renderAxis();
+}
+
+function renderAxis(){
+  const axis = AXES[current];
+  document.getElementById("axis-title").textContent = (current+1) + ". " + axis.title;
+  document.getElementById("axis-desc").textContent = axis.desc;
+  document.getElementById("progress-label").textContent = (current+1) + " / " + AXES.length;
+  document.getElementById("progress-inner").style.width = ((current)/AXES.length*100) + "%";
+
+  const list = document.getElementById("question-list");
+  list.innerHTML = "";
+  axis.questions.forEach(function(q, qi){
+    const div = document.createElement("div");
+    div.className = "question";
+    const p = document.createElement("p");
+    p.textContent = "Q" + (qi+1) + ". " + q;
+    div.appendChild(p);
+
+    const scale = document.createElement("div");
+    scale.className = "scale";
+    for(let v=1; v<=5; v++){
+      const opt = document.createElement("label");
+      opt.className = "scale-opt";
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = axis.key + "-" + qi;
+      input.value = v;
+      if(answers[current][qi] === v) input.checked = true;
+      input.onchange = (function(qi, v){ return function(){ answers[current][qi] = v; }; })(qi, v);
+      const span = document.createElement("span");
+      span.textContent = v;
+      span.style.fontSize = "11px";
+      span.style.color = "#999";
+      opt.appendChild(input);
+      opt.appendChild(span);
+      scale.appendChild(opt);
+    }
+    div.appendChild(scale);
+
+    const labelsRow = document.createElement("div");
+    labelsRow.className = "scale";
+    labelsRow.style.marginTop = "2px";
+    const l1 = document.createElement("label");
+    l1.textContent = SCALE_LABELS[0];
+    l1.style.textAlign = "left";
+    const l2 = document.createElement("label");
+    l2.textContent = SCALE_LABELS[4];
+    l2.style.textAlign = "right";
+    const spacer = document.createElement("label");
+    spacer.textContent = "";
+    labelsRow.appendChild(l1);
+    labelsRow.appendChild(spacer);
+    labelsRow.appendChild(spacer.cloneNode());
+    labelsRow.appendChild(l2);
+    div.appendChild(labelsRow);
+
+    list.appendChild(div);
+  });
+
+  document.getElementById("btn-prev").style.visibility = current === 0 ? "hidden" : "visible";
+  document.getElementById("btn-next").textContent = current === AXES.length - 1 ? "結果を見る" : "次へ";
+  try { window.scrollTo({top:0, behavior:"smooth"}); } catch(e) { /* older environments */ }
+}
+
+function currentAxisComplete(){
+  return answers[current].every(function(a){ return a !== null; });
+}
+
+function nextAxis(){
+  if(!currentAxisComplete()){
+    alert("すべての質問に回答してください。");
+    return;
+  }
+  if(current < AXES.length - 1){
+    current++;
+    renderAxis();
+  } else {
+    showResult();
+  }
+}
+
+function prevAxis(){
+  if(current > 0){
+    current--;
+    renderAxis();
+  }
+}
+
+function showResult(){
+  document.getElementById("progress-inner").style.width = "100%";
+  document.getElementById("screen-quiz").classList.add("hidden");
+  const resultScreen = document.getElementById("screen-result");
+  resultScreen.classList.remove("hidden");
+
+  const axisScores = AXES.map(function(axis, i){
+    const sum = answers[i].reduce(function(a,b){ return a+b; }, 0);
+    const max = axis.questions.length * 5;
+    return { key: axis.key, title: axis.title, sum: sum, max: max, pct: Math.round((sum/max)*100) };
+  });
+
+  const totalSum = axisScores.reduce(function(a,b){ return a + b.sum; }, 0);
+  const totalMax = axisScores.reduce(function(a,b){ return a + b.max; }, 0);
+  const overallPct = Math.round((totalSum/totalMax)*100);
+
+  let type;
+  if(overallPct < 40){
+    type = {
+      name: "霧の中の航海",
+      tagline: "Fog Navigator",
+      desc: "判断の基準がまだ定まっておらず、その場その場の勘や勢いで商品開発の意思決定が行われている状態です。まずは1つの軸から、判断基準を言語化することをおすすめします。"
+    };
+  } else if(overallPct < 60){
+    type = {
+      name: "地図なき挑戦",
+      tagline: "Uncharted Challenger",
+      desc: "行動力はあるものの、判断に再現性がまだ育っていません。個人の経験や勘に頼っている部分を、チームで共有できる基準に変えていく段階です。"
+    };
+  } else if(overallPct < 80){
+    type = {
+      name: "羅針盤の芽生え",
+      tagline: "Emerging Compass",
+      desc: "判断の軸は育ってきていますが、すべての場面で一貫して機能しているわけではありません。弱い軸を特定し、そこだけ重点的に基準を整えると、判断品質は大きく安定します。"
+    };
+  } else {
+    type = {
+      name: "羅針盤型経営",
+      tagline: "True North Navigator",
+      desc: "商品開発における判断基準が明確で、迷いなく意思決定できている状態です。この水準を維持しながら、さらに難易度の高い判断(新規領域への進出など)にも応用していけます。"
+    };
+  }
+
+  document.getElementById("result-type").textContent = type.name;
+  document.getElementById("result-tagline").textContent = type.tagline;
+  document.getElementById("result-desc").textContent = type.desc;
+  document.getElementById("result-score").textContent = overallPct;
+
+  const sorted = axisScores.slice().sort(function(a,b){ return a.pct - b.pct; });
+  const weakest = sorted[0];
+
+  const barChart = document.getElementById("bar-chart");
+  barChart.innerHTML = "";
+  axisScores.forEach(function(a){
+    const row = document.createElement("div");
+    row.className = "bar-row";
+    const labelRow = document.createElement("div");
+    labelRow.className = "label-row";
+    labelRow.innerHTML = "<span>" + a.title + "</span><span>" + a.pct + "%</span>";
+    const barOuter = document.createElement("div");
+    barOuter.className = "bar-outer";
+    const barInner = document.createElement("div");
+    barInner.className = "bar-inner" + (a.key === weakest.key ? " weak" : "");
+    barOuter.appendChild(barInner);
+    row.appendChild(labelRow);
+    row.appendChild(barOuter);
+    barChart.appendChild(row);
+    const raf = window.requestAnimationFrame || function(fn){ setTimeout(fn, 0); };
+    raf(function(){ barInner.style.width = a.pct + "%"; });
+  });
+
+  const AXIS_ADVICE = {
+    make: "「何を作るか」の判断が弱点です。企画の起点となる「価値の種」の見極め方を整理すると、判断の精度が上がります。",
+    notmake: "「何を作らないか」の判断が弱点です。着手前に止める基準がないと、リソースが分散しやすくなります。",
+    quality: "「品質基準」の判断が弱点です。過剰品質・過小品質のどちらに寄りやすいかを一度棚卸しすると良いでしょう。",
+    oem: "「OEM選定」の判断が弱点です。価格以外の評価軸(品質管理体制・コミュニケーション力)を発注前のチェックに加えることをおすすめします。",
+    exit: "「撤退判断」が弱点です。投入前に撤退基準を数値で決めておくと、感情的な先延ばしを防げます。",
+    consensus: "「社内コンセンサス形成」が弱点です。反対意見を拾い上げるプロセスを意思決定の前段階に組み込むと、判断の後戻りが減ります。"
+  };
+
+  document.getElementById("weak-box").innerHTML =
+    "<strong>最も伸びしろのある軸:" + weakest.title + "(" + weakest.pct + "%)</strong><br>" + AXIS_ADVICE[weakest.key];
+
+  document.getElementById("note-link").href = "https://note.com/";
+  document.getElementById("visasq-link").href = "https://visasq.com/";
+}
+</script>
+</body>
+</html>
