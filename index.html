@@ -3,549 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atlas Value | 商品開発 判断品質診断</title>
-<style>
-  :root{
-    --navy:#1F3864;
-    --blue:#2E75B6;
-    --lightblue:#EAF2F8;
-    --gray:#666666;
-    --border:#DDE3EA;
-    --bg:#FAFBFC;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    font-family:"Yu Gothic","Hiragino Sans",sans-serif;
-    background:var(--bg);
-    color:#222;
-    line-height:1.7;
-  }
-  .wrap{
-    max-width:720px;
-    margin:0 auto;
-    padding:32px 20px 80px;
-  }
-  header.top{
-    text-align:center;
-    margin-bottom:8px;
-  }
-  header.top .brand{
-    font-size:14px;
-    letter-spacing:2px;
-    color:var(--blue);
-    font-weight:bold;
-  }
-  header.top h1{
-    font-size:24px;
-    color:var(--navy);
-    margin:6px 0 0;
-  }
-  .card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:28px 24px;
-    margin-top:24px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.03);
-  }
-  .lead{
-    color:#444;
-    font-size:15px;
-  }
-  .lead strong{color:var(--navy);}
-  button{
-    font-family:inherit;
-    cursor:pointer;
-    border:none;
-    border-radius:6px;
-    font-size:15px;
-    padding:12px 22px;
-  }
-  .btn-primary{
-    background:var(--navy);
-    color:#fff;
-  }
-  .btn-primary:hover{background:var(--blue);}
-  .btn-secondary{
-    background:#fff;
-    color:var(--navy);
-    border:1px solid var(--navy);
-  }
-  .btn-row{
-    display:flex;
-    justify-content:space-between;
-    margin-top:28px;
-    gap:12px;
-  }
-  .progress-outer{
-    height:6px;
-    background:var(--border);
-    border-radius:3px;
-    overflow:hidden;
-    margin:20px 0 4px;
-  }
-  .progress-inner{
-    height:100%;
-    background:var(--blue);
-    width:0%;
-    transition:width .3s;
-  }
-  .progress-label{
-    font-size:12px;
-    color:var(--gray);
-    text-align:right;
-  }
-  .axis-title{
-    color:var(--navy);
-    font-size:19px;
-    margin:0 0 4px;
-  }
-  .axis-desc{
-    color:var(--gray);
-    font-size:13px;
-    margin-bottom:20px;
-  }
-  .question{
-    margin-bottom:26px;
-  }
-  .question p{
-    font-size:15px;
-    margin:0 0 10px;
-    color:#222;
-  }
-  .scale{
-    display:flex;
-    justify-content:space-between;
-    gap:6px;
-  }
-  .scale label{
-    flex:1;
-    text-align:center;
-    font-size:11px;
-    color:var(--gray);
-  }
-  .scale-opt{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-  }
-  .scale-opt input{
-    width:20px;height:20px;
-    accent-color:var(--blue);
-  }
-  .hidden{display:none;}
-  .type-name{
-    font-size:26px;
-    color:var(--navy);
-    text-align:center;
-    margin:4px 0 6px;
-  }
-  .type-sub{
-    text-align:center;
-    color:var(--gray);
-    font-size:13px;
-    margin-bottom:18px;
-  }
-  .score-big{
-    text-align:center;
-    font-size:15px;
-    color:#444;
-    margin-bottom:24px;
-  }
-  .score-big span{
-    font-size:34px;
-    color:var(--blue);
-    font-weight:bold;
-  }
-  .bar-row{
-    margin-bottom:14px;
-  }
-  .bar-row .label-row{
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-    margin-bottom:4px;
-    color:#333;
-  }
-  .bar-outer{
-    height:10px;
-    background:var(--lightblue);
-    border-radius:5px;
-    overflow:hidden;
-  }
-  .bar-inner{
-    height:100%;
-    background:var(--blue);
-    border-radius:5px;
-    width:0%;
-    transition:width .6s;
-  }
-  .bar-inner.weak{background:#C0504D;}
-  .weak-box{
-    background:var(--lightblue);
-    border-left:4px solid var(--blue);
-    padding:16px 18px;
-    border-radius:6px;
-    margin-top:24px;
-    font-size:14px;
-  }
-  .weak-box strong{color:var(--navy);}
-  .cta-box{
-    margin-top:28px;
-    text-align:center;
-  }
-  .cta-box p{
-    font-size:13px;
-    color:var(--gray);
-    margin-bottom:14px;
-  }
-  .cta-buttons{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .cta-buttons a{
-    display:block;
-    text-decoration:none;
-    padding:13px;
-    border-radius:6px;
-    font-size:14px;
-  }
-  .cta-main{background:var(--navy);color:#fff;}
-  .cta-sub{background:#fff;color:var(--navy);border:1px solid var(--navy);}
-  footer.credit{
-    text-align:center;
-    color:#999;
-    font-size:11px;
-    margin-top:40px;
-  }
-  .retake{
-    display:block;
-    margin:18px auto 0;
-    background:none;
-    color:var(--gray);
-    font-size:12px;
-    text-decoration:underline;
-  }
-</style>
+<title>Atlas Value（アトラスバリュー）| 価値ある挑戦を、羅針盤となって見極め支える。</title>
+<meta name="description" content="Atlas Valueは、ヘルスケア用品・健康雑貨の商品開発に40年携わってきた経験をもとに、中小企業の商品開発診断を伴走支援するコンサルティングです。">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="wrap">
 
-  <header class="top">
-    <div class="brand">ATLAS VALUE</div>
-    <h1>商品開発 判断品質診断</h1>
-  </header>
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <img src="images/logo-mark-light.png" alt="Atlas Value ロゴ" class="mark">
+      <span class="word">Atlas <b>Value</b></span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="current">トップ</a>
+      <a href="service.html">サービス</a>
+      <a href="results.html">実績</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="contact.html" class="nav-cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
 
-  <section id="screen-intro" class="card">
-    <p class="lead">
-      良い商品を作れば売れる — その思い込みが、実は一番危険です。<br><br>
-      商品開発がうまくいくかどうかは、<strong>商品そのものの良し悪し</strong>ではなく、<br>
-      その手前にある<strong>「判断の質」</strong>で決まります。<br><br>
-      この診断では、「何を作るか」「何を作らないか」「品質基準」「OEM選定」「撤退判断」「社内コンセンサス形成」の6つの軸から、
-      あなたの会社・チームの商品開発における判断品質を可視化します。<br><br>
-      所要時間は約3分、24の質問に5段階で答えるだけです。
-    </p>
-    <div class="btn-row" style="justify-content:center;">
-      <button class="btn-primary" onclick="startQuiz()">診断をはじめる</button>
-    </div>
-  </section>
-
-  <section id="screen-quiz" class="card hidden">
-    <div class="progress-outer"><div class="progress-inner" id="progress-inner"></div></div>
-    <div class="progress-label" id="progress-label"></div>
-    <h2 class="axis-title" id="axis-title"></h2>
-    <p class="axis-desc" id="axis-desc"></p>
-    <div id="question-list"></div>
-    <div class="btn-row">
-      <button class="btn-secondary" id="btn-prev" onclick="prevAxis()">戻る</button>
-      <button class="btn-primary" id="btn-next" onclick="nextAxis()">次へ</button>
-    </div>
-  </section>
-
-  <section id="screen-result" class="card hidden">
-    <div class="type-name" id="result-type"></div>
-    <div class="type-sub" id="result-tagline"></div>
-    <p class="lead" id="result-desc" style="text-align:center;"></p>
-
-    <div class="score-big">
-      総合判断品質スコア　<span id="result-score"></span> / 100
-    </div>
-
-    <div id="bar-chart"></div>
-
-    <div class="weak-box" id="weak-box"></div>
-
-    <div class="cta-box">
-      <p>羅針盤は、答えを教えません。ただ、正しい方向を示すだけです。<br>次の一歩を、一緒に考えませんか。</p>
-      <div class="cta-buttons">
-        <a class="cta-main" href="mailto:yaraiyarai409@gmail.com?subject=判断品質診断を受けました" target="_blank">Atlas Valueに相談する(コンサル問い合わせ)</a>
-        <a class="cta-sub" href="#" id="note-link" target="_blank">noteで「価値の種」の見つけ方を読む</a>
-        <a class="cta-sub" href="#" id="visasq-link" target="_blank">ビザスクで新井義信に相談する</a>
+<section class="hero">
+  <img src="images/logo-mark-light.png" alt="" class="hero-bg-mark">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">ATLAS VALUE</p>
+      <h1>価値ある挑戦を、<br><span class="accent">羅針盤</span>となって見極め支える。</h1>
+      <p class="lead">見えない価値を見抜き、確かな一歩へ導く。ヘルスケア用品・健康雑貨の商品開発において、40年の現場経験を活かし、中小企業の挑戦を伴走支援します。</p>
+      <div class="hero-actions">
+        <a href="service.html" class="btn btn-solid">サービスを見る</a>
+        <a href="contact.html" class="btn btn-outline">お問い合わせ</a>
       </div>
     </div>
+    <div class="hero-visual">
+      <div class="frame">
+        <img src="images/hero-compass.jpg" alt="羅針盤を手に、山頂で夕陽を見つめる新井義信">
+      </div>
+    </div>
+  </div>
+</section>
 
-    <button class="retake" onclick="location.reload()">もう一度診断する</button>
-  </section>
+<section>
+  <div class="wrap">
+    <div class="compass-divider">
+      <span class="line"></span>
+      <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 0 L12 8 L20 10 L12 12 L10 20 L8 12 L0 10 L8 8 Z" fill="#c9a227"/></svg>
+      <span class="line"></span>
+    </div>
+    <div class="section-head" style="margin-top:36px;">
+      <h2>正しい方向を見極め、<br>確かな一歩を踏み出すために。</h2>
+      <p>新しい商品を世に出す挑戦には、迷いがつきものです。Atlas Valueは、正しい方向を見極める羅針盤として、そして価値の種を見つけ育てる伴走者として、経営者・開発担当者の判断品質を高めるお手伝いをします。</p>
+    </div>
+  </div>
+</section>
 
-  <footer class="credit">Atlas Value &mdash; 商品開発の判断品質を高める</footer>
-</div>
+<section class="on-cream-dim">
+  <div class="wrap">
+    <div class="feature-grid">
+      <div class="feature-text">
+        <p class="eyebrow">MITSUME</p>
+        <h2>価値の種を見抜き、<br>失敗の芽を断つ。</h2>
+        <p>それがAtlas Valueの目利き力です。商品開発の現場で40年培ってきた「なぜ売れるのか」「なぜ失敗するのか」を見抜く目を、貴社の商品開発診断に活かします。</p>
+        <p class="note">※本サイトの内容は商品開発における気づき・示唆の提供を目的としており、効能効果を保証するものではありません。</p>
+      </div>
+      <div class="feature-media">
+        <img src="images/results-diagnose.jpg" alt="商品サンプルを手に診断する新井義信">
+      </div>
+    </div>
+  </div>
+</section>
 
-<script>
-const AXES = [
-  {
-    key: "make",
-    title: "何を作るか",
-    desc: "商品コンセプトを判断する力",
-    questions: [
-      "新商品のアイデアが出たとき、「誰が・なぜ欲しいのか」を言語化してから開発に進めている",
-      "企画は思いつきや社内の流行だけでなく、根拠を持ってスタートしている",
-      "市場に眠る「価値の種」を、企画者以外の視点でも検証している",
-      "「なぜ今この商品を作るのか」を、社内で明確に説明できる"
-    ]
-  },
-  {
-    key: "notmake",
-    title: "何を作らないか",
-    desc: "着手を止める・絞り込む判断力",
-    questions: [
-      "自社の強みと合わない企画は、着手前に止める判断ができている",
-      "「作れるから作る」ではなく「作るべきか」を毎回問い直している",
-      "一度動き出した企画でも、違和感があれば立ち止まる文化がある",
-      "却下した企画について、却下した基準を言語化できている"
-    ]
-  },
-  {
-    key: "quality",
-    title: "どこまで品質を求めるか",
-    desc: "品質基準を設計する判断力",
-    questions: [
-      "商品ごとに必要な品質基準を、着手前に決めている",
-      "品質基準は、コストや納期とのバランスで現実的に設定している",
-      "過剰品質(オーバースペック)になっていないか、定期的に点検している",
-      "品質基準について、開発・営業・経営の認識がずれていない"
-    ]
-  },
-  {
-    key: "oem",
-    title: "OEMをどう選ぶか",
-    desc: "外部パートナーを選定する判断力",
-    questions: [
-      "OEM先を選ぶ際、価格だけでなく品質管理体制やコミュニケーション力も評価している",
-      "OEM先との役割分担(何を任せ、何を自社で担うか)が明確になっている",
-      "契約前に、複数のOEM候補を比較検討するプロセスがある",
-      "OEM先とのトラブル発生時の対応を、事前に想定できている"
-    ]
-  },
-  {
-    key: "exit",
-    title: "撤退判断",
-    desc: "やめる・引く判断力",
-    questions: [
-      "商品を投入する前に、「どうなったら撤退するか」の基準を決めている",
-      "反応が悪いとき、感情ではなく事前に決めた基準で撤退を判断できている",
-      "撤退の判断が、「もったいない」という心理で先延ばしにされていない",
-      "撤退した商品・企画から学びを次に活かす仕組みがある"
-    ]
-  },
-  {
-    key: "consensus",
-    title: "社内コンセンサス形成",
-    desc: "組織として判断を support する力",
-    questions: [
-      "商品開発の判断について、関係者間で納得感のある合意形成ができている",
-      "反対意見や懸念点を、意思決定の前にきちんと拾い上げている",
-      "経営層と現場の間で、商品開発の方向性についての認識がずれていない",
-      "一度決めた判断について、後から「言った言わない」の対立が起きにくい"
-    ]
-  }
-];
+<section class="on-navy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="justify-content:center;">FIVE VALUES</p>
+      <h2>Atlas Valueが大切にする価値観</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="values-row">
+      <div class="value-item">
+        <svg class="vicon" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="9" stroke="#c9a227" stroke-width="1.4"/><line x1="23" y1="2" x2="23" y2="10" stroke="#c9a227" stroke-width="1.4"/><line x1="23" y1="36" x2="23" y2="44" stroke="#c9a227" stroke-width="1.4"/><line x1="30.5" y1="15.5" x2="36" y2="10" stroke="#c9a227" stroke-width="1.4"/></svg>
+        <h3>見極める</h3>
+        <p>本質を見抜き、正しい判断につなげる</p>
+      </div>
+      <div class="value-item">
+        <svg class="vicon" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="15" stroke="#c9a227" stroke-width="1.4"/><path d="M23 12 L27 23 L23 34 L19 23 Z" fill="#c9a227"/></svg>
+        <h3>導く</h3>
+        <p>最適な道筋を示す</p>
+      </div>
+      <div class="value-item">
+        <svg class="vicon" viewBox="0 0 46 46" fill="none"><path d="M23 6 L36 38 L23 30 L10 38 Z" stroke="#c9a227" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <h3>挑む</h3>
+        <p>新たな挑戦を後押しする</p>
+      </div>
+      <div class="value-item">
+        <svg class="vicon" viewBox="0 0 46 46" fill="none"><path d="M23 40 V22" stroke="#c9a227" stroke-width="1.4"/><path d="M23 22 C10 22 10 8 10 8 C10 8 23 8 23 22Z" fill="#c9a227"/><path d="M23 22 C36 22 36 12 36 12 C36 12 23 12 23 22Z" fill="none" stroke="#c9a227" stroke-width="1.4"/></svg>
+        <h3>育てる</h3>
+        <p>価値の種を育て、成長につなげる</p>
+      </div>
+      <div class="value-item">
+        <svg class="vicon" viewBox="0 0 46 46" fill="none"><path d="M23 8 L36 38 L23 30 L10 38 Z" stroke="#c9a227" stroke-width="1.4" stroke-linejoin="round"/><circle cx="23" cy="20" r="6" fill="#c9a227"/></svg>
+        <h3>支える</h3>
+        <p>縁の下の力持ちとして寄り添う</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-const SCALE_LABELS = ["全くそう思わない","あまりそう思わない","どちらともいえない","ややそう思う","非常にそう思う"];
+<section>
+  <div class="wrap">
+    <div class="feature-grid reverse">
+      <div class="feature-media">
+        <img src="images/service-consult.jpg" alt="経営者と相談する新井義信">
+      </div>
+      <div class="feature-text">
+        <p class="eyebrow">SERVICE</p>
+        <h2>6ヶ月の伴走型<br>コンサルティング</h2>
+        <p>月次の診断・提案書作成からスポット相談、緊急相談まで。継続的な伴走を通じて、貴社の判断品質そのものを高めていきます。</p>
+        <div style="margin-top:28px;"><a href="service.html" class="btn btn-outline" style="border-color:var(--gold); color:var(--ink);">サービス詳細を見る →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-let current = 0;
-const answers = AXES.map(function(a){ return new Array(a.questions.length).fill(null); });
+<section class="on-cream-dim">
+  <div class="wrap">
+    <div class="feature-grid">
+      <div class="feature-text">
+        <p class="eyebrow">PROFILE</p>
+        <h2>40年間、商品開発の<br>現場に立ち続けてきました</h2>
+        <p>著名着圧ソックス、著名磁力ネックレスなど、健康雑貨・ヘルスケア用品の商品開発に長年携わってきた経験をもとに、貴社の挑戦を支えます。</p>
+        <div style="margin-top:28px;"><a href="profile.html" class="btn btn-outline" style="border-color:var(--gold); color:var(--ink);">プロフィールを見る →</a></div>
+      </div>
+      <div class="feature-media">
+        <img src="images/profile-front.jpg" alt="新井義信 プロフィール写真">
+      </div>
+    </div>
+  </div>
+</section>
 
-function startQuiz(){
-  document.getElementById("screen-intro").classList.add("hidden");
-  document.getElementById("screen-quiz").classList.remove("hidden");
-  renderAxis();
-}
+<section class="cta-band">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center;">CONTACT</p>
+    <h2>価値ある挑戦を、ここから。</h2>
+    <div class="btn-row">
+      <a href="contact.html" class="btn btn-solid">お問い合わせはこちら</a>
+    </div>
+  </div>
+</section>
 
-function renderAxis(){
-  const axis = AXES[current];
-  document.getElementById("axis-title").textContent = (current+1) + ". " + axis.title;
-  document.getElementById("axis-desc").textContent = axis.desc;
-  document.getElementById("progress-label").textContent = (current+1) + " / " + AXES.length;
-  document.getElementById("progress-inner").style.width = ((current)/AXES.length*100) + "%";
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/logo-wordmark-sans-light.png" alt="Atlas Value">
+        <p>価値ある挑戦を、羅針盤となって見極め支える。ヘルスケア用品・健康雑貨の商品開発診断コンサルタント。</p>
+      </div>
+      <div class="footer-col">
+        <h5>SITE MAP</h5>
+        <a href="index.html">トップ</a>
+        <a href="service.html">サービス</a>
+        <a href="results.html">実績</a>
+        <a href="profile.html">プロフィール</a>
+        <a href="contact.html">お問い合わせ</a>
+      </div>
+      <div class="footer-col">
+        <h5>CONTACT</h5>
+        <span>奈良県生駒市東菜畑2丁目925-6</span>
+        <span>0743-75-9730</span>
+        <span>9:00〜17:00（メールは24時間受付）</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Atlas Value</span>
+      <a href="contact.html#legal">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
 
-  const list = document.getElementById("question-list");
-  list.innerHTML = "";
-  axis.questions.forEach(function(q, qi){
-    const div = document.createElement("div");
-    div.className = "question";
-    const p = document.createElement("p");
-    p.textContent = "Q" + (qi+1) + ". " + q;
-    div.appendChild(p);
-
-    const scale = document.createElement("div");
-    scale.className = "scale";
-    for(let v=1; v<=5; v++){
-      const opt = document.createElement("label");
-      opt.className = "scale-opt";
-      const input = document.createElement("input");
-      input.type = "radio";
-      input.name = axis.key + "-" + qi;
-      input.value = v;
-      if(answers[current][qi] === v) input.checked = true;
-      input.onchange = (function(qi, v){ return function(){ answers[current][qi] = v; }; })(qi, v);
-      const span = document.createElement("span");
-      span.textContent = v;
-      span.style.fontSize = "11px";
-      span.style.color = "#999";
-      opt.appendChild(input);
-      opt.appendChild(span);
-      scale.appendChild(opt);
-    }
-    div.appendChild(scale);
-
-    const labelsRow = document.createElement("div");
-    labelsRow.className = "scale";
-    labelsRow.style.marginTop = "2px";
-    const l1 = document.createElement("label");
-    l1.textContent = SCALE_LABELS[0];
-    l1.style.textAlign = "left";
-    const l2 = document.createElement("label");
-    l2.textContent = SCALE_LABELS[4];
-    l2.style.textAlign = "right";
-    const spacer = document.createElement("label");
-    spacer.textContent = "";
-    labelsRow.appendChild(l1);
-    labelsRow.appendChild(spacer);
-    labelsRow.appendChild(spacer.cloneNode());
-    labelsRow.appendChild(l2);
-    div.appendChild(labelsRow);
-
-    list.appendChild(div);
-  });
-
-  document.getElementById("btn-prev").style.visibility = current === 0 ? "hidden" : "visible";
-  document.getElementById("btn-next").textContent = current === AXES.length - 1 ? "結果を見る" : "次へ";
-  try { window.scrollTo({top:0, behavior:"smooth"}); } catch(e) { /* older environments */ }
-}
-
-function currentAxisComplete(){
-  return answers[current].every(function(a){ return a !== null; });
-}
-
-function nextAxis(){
-  if(!currentAxisComplete()){
-    alert("すべての質問に回答してください。");
-    return;
-  }
-  if(current < AXES.length - 1){
-    current++;
-    renderAxis();
-  } else {
-    showResult();
-  }
-}
-
-function prevAxis(){
-  if(current > 0){
-    current--;
-    renderAxis();
-  }
-}
-
-function showResult(){
-  document.getElementById("progress-inner").style.width = "100%";
-  document.getElementById("screen-quiz").classList.add("hidden");
-  const resultScreen = document.getElementById("screen-result");
-  resultScreen.classList.remove("hidden");
-
-  const axisScores = AXES.map(function(axis, i){
-    const sum = answers[i].reduce(function(a,b){ return a+b; }, 0);
-    const max = axis.questions.length * 5;
-    return { key: axis.key, title: axis.title, sum: sum, max: max, pct: Math.round((sum/max)*100) };
-  });
-
-  const totalSum = axisScores.reduce(function(a,b){ return a + b.sum; }, 0);
-  const totalMax = axisScores.reduce(function(a,b){ return a + b.max; }, 0);
-  const overallPct = Math.round((totalSum/totalMax)*100);
-
-  let type;
-  if(overallPct < 40){
-    type = {
-      name: "霧の中の航海",
-      tagline: "Fog Navigator",
-      desc: "判断の基準がまだ定まっておらず、その場その場の勘や勢いで商品開発の意思決定が行われている状態です。まずは1つの軸から、判断基準を言語化することをおすすめします。"
-    };
-  } else if(overallPct < 60){
-    type = {
-      name: "地図なき挑戦",
-      tagline: "Uncharted Challenger",
-      desc: "行動力はあるものの、判断に再現性がまだ育っていません。個人の経験や勘に頼っている部分を、チームで共有できる基準に変えていく段階です。"
-    };
-  } else if(overallPct < 80){
-    type = {
-      name: "羅針盤の芽生え",
-      tagline: "Emerging Compass",
-      desc: "判断の軸は育ってきていますが、すべての場面で一貫して機能しているわけではありません。弱い軸を特定し、そこだけ重点的に基準を整えると、判断品質は大きく安定します。"
-    };
-  } else {
-    type = {
-      name: "羅針盤型経営",
-      tagline: "True North Navigator",
-      desc: "商品開発における判断基準が明確で、迷いなく意思決定できている状態です。この水準を維持しながら、さらに難易度の高い判断(新規領域への進出など)にも応用していけます。"
-    };
-  }
-
-  document.getElementById("result-type").textContent = type.name;
-  document.getElementById("result-tagline").textContent = type.tagline;
-  document.getElementById("result-desc").textContent = type.desc;
-  document.getElementById("result-score").textContent = overallPct;
-
-  const sorted = axisScores.slice().sort(function(a,b){ return a.pct - b.pct; });
-  const weakest = sorted[0];
-
-  const barChart = document.getElementById("bar-chart");
-  barChart.innerHTML = "";
-  axisScores.forEach(function(a){
-    const row = document.createElement("div");
-    row.className = "bar-row";
-    const labelRow = document.createElement("div");
-    labelRow.className = "label-row";
-    labelRow.innerHTML = "<span>" + a.title + "</span><span>" + a.pct + "%</span>";
-    const barOuter = document.createElement("div");
-    barOuter.className = "bar-outer";
-    const barInner = document.createElement("div");
-    barInner.className = "bar-inner" + (a.key === weakest.key ? " weak" : "");
-    barOuter.appendChild(barInner);
-    row.appendChild(labelRow);
-    row.appendChild(barOuter);
-    barChart.appendChild(row);
-    const raf = window.requestAnimationFrame || function(fn){ setTimeout(fn, 0); };
-    raf(function(){ barInner.style.width = a.pct + "%"; });
-  });
-
-  const AXIS_ADVICE = {
-    make: "「何を作るか」の判断が弱点です。企画の起点となる「価値の種」の見極め方を整理すると、判断の精度が上がります。",
-    notmake: "「何を作らないか」の判断が弱点です。着手前に止める基準がないと、リソースが分散しやすくなります。",
-    quality: "「品質基準」の判断が弱点です。過剰品質・過小品質のどちらに寄りやすいかを一度棚卸しすると良いでしょう。",
-    oem: "「OEM選定」の判断が弱点です。価格以外の評価軸(品質管理体制・コミュニケーション力)を発注前のチェックに加えることをおすすめします。",
-    exit: "「撤退判断」が弱点です。投入前に撤退基準を数値で決めておくと、感情的な先延ばしを防げます。",
-    consensus: "「社内コンセンサス形成」が弱点です。反対意見を拾い上げるプロセスを意思決定の前段階に組み込むと、判断の後戻りが減ります。"
-  };
-
-  document.getElementById("weak-box").innerHTML =
-    "<strong>最も伸びしろのある軸:" + weakest.title + "(" + weakest.pct + "%)</strong><br>" + AXIS_ADVICE[weakest.key];
-
-  document.getElementById("note-link").href = "https://note.com/";
-  document.getElementById("visasq-link").href = "https://visasq.com/";
-}
-</script>
 </body>
 </html>
