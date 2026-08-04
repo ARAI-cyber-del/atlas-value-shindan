@@ -104,15 +104,8 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 12px;
 }
-.brand img.mark { height: 34px; width: auto; }
-.brand .word {
-  font-family: var(--font-en);
-  font-style: italic;
-  font-size: 22px;
-  letter-spacing: 0.04em;
-  color: var(--white);
-}
-.brand .word b { color: var(--gold); font-weight: 600; }
+.brand img.mark { height: 46px; width: auto; }
+.brand img.wordmark { height: 22px; width: auto; }
 
 nav.main-nav { display: flex; align-items: center; gap: 40px; }
 nav.main-nav a {
