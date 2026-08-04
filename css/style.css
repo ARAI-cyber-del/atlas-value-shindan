@@ -244,7 +244,7 @@ section.on-cream-dim { background: var(--cream-dim); }
   border-right: 1px solid var(--navy-line);
 }
 .value-item:last-child { border-right: none; }
-.value-item .vicon { margin: 0 auto 20px; width: 46px; height: 46px; }
+.value-item .vicon { display: block; margin: 0 auto 20px; height: 44px; width: auto; }
 .value-item h3 { color: var(--white); font-size: 18px; letter-spacing: 0.12em; }
 .value-item p { margin-top: 12px; font-size: 13.5px; color: rgba(247,244,236,0.68); line-height: 1.85; }
 
