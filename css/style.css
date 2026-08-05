@@ -164,15 +164,18 @@ nav.main-nav a.current::after {
     rgba(10,18,32,0.08) 72%,
     rgba(10,18,32,0) 85%);
 }
-/* HERO-FIX-08 */
+/* HERO-FIX-09 */
 .hero .wrap {
   position: relative;
   z-index: 3;
   min-height: 560px;
   display: flex;
   align-items: flex-start;
-  padding-top: 8px;
+  padding-top: 0px;
   padding-bottom: 72px;
+}
+.hero-copy {
+  margin-top: -48px;
 }
 .hero-copy { max-width: 620px; }
 .hero-copy h1 {
