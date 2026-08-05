@@ -89,9 +89,10 @@ h1, h2, h3, h4 {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 18, 32, 0.94);
+  background: rgba(250, 248, 242, 0.96);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--navy-line);
+  border-bottom: 1px solid rgba(25, 23, 18, 0.09);
+  box-shadow: 0 1px 0 rgba(25, 23, 18, 0.02);
 }
 .site-header .wrap {
   display: flex;
@@ -109,14 +110,14 @@ h1, h2, h3, h4 {
 
 nav.main-nav { display: flex; align-items: center; gap: 40px; }
 nav.main-nav a {
-  color: var(--cream);
+  color: var(--ink);
   font-size: 14.5px;
   letter-spacing: 0.06em;
   position: relative;
   padding: 6px 0;
   transition: color .25s ease;
 }
-nav.main-nav a:hover { color: var(--gold-light); }
+nav.main-nav a:hover { color: var(--gold); }
 nav.main-nav a.current { color: var(--gold); }
 nav.main-nav a.current::after {
   content: "";
@@ -130,6 +131,7 @@ nav.main-nav a.current::after {
   padding: 9px 22px !important;
   border-radius: 2px;
   font-size: 13.5px !important;
+  color: var(--ink) !important;
 }
 .nav-cta:hover { background: var(--gold); color: var(--navy-deep) !important; }
 
@@ -261,11 +263,79 @@ section.on-cream-dim { background: var(--cream-dim); }
 .feature-text h2 { font-size: 26px; line-height: 1.7; }
 .feature-text p { margin-top: 20px; color: var(--ink-soft); font-size: 15.5px; }
 
+/* ===== Brand visual panels (replace person photography) ===== */
+.media-panel {
+  background: var(--white);
+  border: 1px solid var(--cream-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 40px;
+  min-height: 300px;
+  text-align: center;
+}
+.media-panel.on-navy-panel { background: var(--navy-deep); border-color: var(--navy-line); }
+.media-panel .panel-mark { width: 132px; height: auto; }
+.media-panel .panel-caption {
+  margin-top: 22px;
+  font-family: var(--font-en);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+}
+.media-panel .stat-num {
+  font-family: var(--font-en);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 76px;
+  line-height: 1;
+}
+.media-panel .stat-num .stat-unit {
+  font-family: var(--font-body);
+  font-style: normal;
+  color: var(--ink);
+  font-size: 26px;
+  margin-left: 6px;
+}
+.media-panel .stat-label {
+  margin-top: 20px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  max-width: 220px;
+  line-height: 1.8;
+}
+.media-panel .compass-large { width: 64px; height: 64px; }
+.media-panel .panel-list {
+  width: 100%;
+  max-width: 260px;
+  text-align: left;
+  margin-top: 6px;
+}
+.media-panel .panel-list li {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--cream-dim);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.media-panel .panel-list li:first-child { border-top: none; }
+.media-panel .panel-list .n { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 15px; }
+
 /* ===== Cards ===== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+}
+.card-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
 }
 .card {
   background: var(--white);
@@ -275,6 +345,7 @@ section.on-cream-dim { background: var(--cream-dim); }
 .card .num { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 26px; }
 .card h3 { margin-top: 14px; font-size: 19px; line-height: 1.6; }
 .card p { margin-top: 14px; font-size: 14.5px; color: var(--ink-soft); }
+.card .cat-icon { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 13px; letter-spacing: 0.1em; }
 
 /* ===== Case study blocks ===== */
 .case {
@@ -402,12 +473,17 @@ footer.site-footer {
   .feature-grid { grid-template-columns: 1fr; gap: 32px; }
   .feature-grid.reverse .feature-media { order: 0; }
   .card-grid { grid-template-columns: 1fr; }
+  .card-grid-4 { grid-template-columns: 1fr 1fr; }
   .case { grid-template-columns: 1fr; }
   .profile-hero { grid-template-columns: 1fr; }
   .profile-photo { max-width: 280px; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .contact-methods { grid-template-columns: 1fr; }
   .legal-table th { width: 130px; }
+}
+
+@media (max-width: 560px) {
+  .card-grid-4 { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
