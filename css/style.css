@@ -167,10 +167,10 @@ nav.main-nav a.current::after {
 .hero .wrap {
   position: relative;
   z-index: 3;
-  min-height: 680px;
+  min-height: 620px;
   display: flex;
-  align-items: center;
-  padding-top: 72px;
+  align-items: flex-start;
+  padding-top: 128px;
   padding-bottom: 72px;
 }
 .hero-copy { max-width: 620px; }
@@ -485,7 +485,7 @@ footer.site-footer {
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
   nav.main-nav { display: none; }
-  .hero .wrap { min-height: 520px; padding-top: 56px; padding-bottom: 56px; }
+  .hero .wrap { min-height: 480px; align-items: flex-start; padding-top: 48px; padding-bottom: 56px; }
   .hero-photo-overlay {
     background: linear-gradient(180deg,
       rgba(10,18,32,0.55) 0%,
