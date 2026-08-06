@@ -177,7 +177,7 @@ nav.main-nav a.current::after {
 .hero-copy {
   margin-top: -140px;
 }
-.hero-copy { max-width: 620px; }
+.hero-copy { max-width: 700px; }
 .hero-copy h1 {
   font-size: clamp(34px, 4.4vw, 52px);
   line-height: 1.5;
@@ -188,7 +188,7 @@ nav.main-nav a.current::after {
   margin-top: 26px;
   font-size: 16.5px;
   color: rgba(247, 244, 236, 0.82);
-  max-width: 46ch;
+  max-width: 620px;
   line-height: 2;
 }
 .hero-actions { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
