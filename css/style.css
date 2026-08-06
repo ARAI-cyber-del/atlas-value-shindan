@@ -467,6 +467,8 @@ section.on-cream-dim { background: var(--cream-dim); }
   padding-left: 16px;
   margin-top: 30px;
   line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 .on-navy .note { color: rgba(247,244,236,0.65); }
 
