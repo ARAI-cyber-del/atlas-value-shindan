@@ -515,8 +515,14 @@ section.on-cream-dim { background: var(--cream-dim); }
 .legal-table th { width: 200px; color: var(--ink-soft); font-weight: 500; letter-spacing: 0.04em; }
 
 /* ===== Service detail sections ===== */
-.service-detail { scroll-margin-top: 100px; }
-.service-detail .feature-grid { align-items: start; }
+.service-detail {
+  scroll-margin-top: 100px;
+  padding-top: 20px;
+}
+.service-detail .feature-grid {
+  align-items: start;
+  grid-template-columns: 0.62fr 1.38fr;
+}
 .service-lead {
   margin-top: 18px;
   font-family: var(--font-display);
@@ -529,9 +535,12 @@ section.on-cream-dim { background: var(--cream-dim); }
 .detail-list {
   background: var(--white);
   border: 1px solid var(--cream-dim);
-  padding: 40px 36px;
+  padding: 40px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 28px;
 }
-.detail-list h4 {
+.detail-list .detail-col h4 {
   font-family: var(--font-en);
   font-style: italic;
   color: var(--gold);
@@ -539,15 +548,15 @@ section.on-cream-dim { background: var(--cream-dim); }
   letter-spacing: 0.06em;
   margin: 26px 0 10px;
 }
-.detail-list h4:first-child { margin-top: 0; }
-.detail-list ul { list-style: none; margin: 0 0 4px; padding: 0; }
-.detail-list ul li {
+.detail-list .detail-col h4:first-child { margin-top: 0; }
+.detail-list .detail-col ul { list-style: none; margin: 0 0 4px; padding: 0; }
+.detail-list .detail-col ul li {
   padding: 9px 0;
   border-top: 1px solid var(--cream-dim);
   font-size: 14.5px;
   color: var(--ink-soft);
 }
-.detail-list ul li:first-child { border-top: none; }
+.detail-list .detail-col ul li:first-child { border-top: none; }
 
 .note {
   font-size: 12.5px;
@@ -580,6 +589,8 @@ footer.site-footer {
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
   nav.main-nav { display: none; }
+  .service-detail .feature-grid { grid-template-columns: 1fr; }
+  .detail-list { grid-template-columns: 1fr; }
   .hero .wrap { min-height: 460px; align-items: flex-start; padding-top: 32px; padding-bottom: 56px; }
   .hero-photo-overlay {
     background: linear-gradient(180deg,
