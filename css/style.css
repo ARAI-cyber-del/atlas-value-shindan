@@ -250,6 +250,15 @@ nav.main-nav a.current::after {
 .page-hero h1 { color: var(--white); font-size: clamp(30px, 3.6vw, 42px); line-height: 1.6; }
 .page-hero p { margin-top: 18px; color: rgba(247,244,236,0.78); max-width: 62ch; font-size: 15.5px; }
 
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items: center;
+}
+.page-hero-visual { max-width: 340px; margin: 0 auto; }
+.page-hero-visual .frame { margin: 0; }
+
 /* ===== Sections ===== */
 section { padding: 96px 0; }
 section.on-navy { background: var(--navy-deep); color: var(--white); }
@@ -592,6 +601,8 @@ footer.site-footer {
   nav.main-nav { display: none; }
   .service-detail .feature-grid { grid-template-columns: 1fr; }
   .detail-list { grid-template-columns: 1fr; }
+  .page-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .page-hero-visual { max-width: 220px; }
   .hero .wrap { min-height: 460px; align-items: flex-start; padding-top: 32px; padding-bottom: 56px; }
   .hero-photo-overlay {
     background: linear-gradient(180deg,
