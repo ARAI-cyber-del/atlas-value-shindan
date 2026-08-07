@@ -70,6 +70,10 @@ h1, h2, h3, h4 {
   background: var(--gold);
   display: inline-block;
 }
+.eyebrow.eyebrow-lg {
+  font-size: 30px;
+  color: #8a6c14;
+}
 
 /* ===== Compass divider — signature motif ===== */
 .compass-divider {
@@ -306,8 +310,8 @@ section.on-cream-dim { background: var(--cream-dim); }
   margin-top: 22px;
   font-family: var(--font-en);
   font-style: italic;
-  color: var(--gold);
-  font-size: 13px;
+  color: #8a6c14;
+  font-size: 26px;
   letter-spacing: 0.14em;
 }
 .media-panel .stat-num {
