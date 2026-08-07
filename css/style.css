@@ -556,6 +556,7 @@ section.on-cream-dim { background: var(--cream-dim); }
   font-size: 14.5px;
   color: var(--ink-soft);
 }
+.detail-list .detail-col:last-child ul li { white-space: nowrap; }
 .detail-list .detail-col ul li:first-child { border-top: none; }
 
 .note {
