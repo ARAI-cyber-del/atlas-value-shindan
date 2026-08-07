@@ -516,6 +516,7 @@ section.on-cream-dim { background: var(--cream-dim); }
 
 /* ===== Service detail sections ===== */
 .service-detail { scroll-margin-top: 100px; }
+.service-detail .feature-grid { align-items: start; }
 .service-lead {
   margin-top: 18px;
   font-family: var(--font-display);
