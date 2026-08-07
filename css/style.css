@@ -299,7 +299,9 @@ section.on-cream-dim { background: var(--cream-dim); }
   text-align: center;
 }
 .media-panel.on-navy-panel { background: var(--navy-deep); border-color: var(--navy-line); }
+.media-panel.media-panel-flat { background: transparent; border: none; }
 .media-panel .panel-mark { width: 132px; height: auto; }
+.media-panel .panel-mark.panel-mark-lg { width: 264px; }
 .media-panel .panel-caption {
   margin-top: 22px;
   font-family: var(--font-en);
