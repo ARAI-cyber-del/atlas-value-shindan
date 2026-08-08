@@ -298,7 +298,7 @@ nav.main-nav a.current::after {
   z-index: 3;
   padding: 112px 0;
 }
-.profile-hero-photo-text { max-width: 580px; }
+.profile-hero-photo-text { max-width: 640px; }
 .profile-hero-photo-text .eyebrow { color: var(--gold-light); }
 .profile-hero-photo-text h2 { color: var(--white); font-size: clamp(26px, 3vw, 34px); line-height: 1.6; }
 .profile-hero-photo-text p { margin-top: 20px; color: rgba(247,244,236,0.78); font-size: 15.5px; }
