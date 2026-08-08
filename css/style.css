@@ -276,7 +276,10 @@ nav.main-nav a.current::after {
   right: 0;
   width: 62%;
   height: 100%;
-  object-fit: cover;
+  background-image: url('../images/profile-compass-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 148% auto;
+  background-position: 100% center;
   z-index: 1;
 }
 .profile-hero-photo::before {
@@ -295,9 +298,9 @@ nav.main-nav a.current::after {
   z-index: 3;
   padding: 112px 0;
 }
-.profile-hero-photo-text { max-width: 500px; }
+.profile-hero-photo-text { max-width: 580px; }
 .profile-hero-photo-text .eyebrow { color: var(--gold-light); }
-.profile-hero-photo-text h2 { color: var(--white); font-size: 26px; line-height: 1.7; }
+.profile-hero-photo-text h2 { color: var(--white); font-size: clamp(26px, 3vw, 34px); line-height: 1.6; }
 .profile-hero-photo-text p { margin-top: 20px; color: rgba(247,244,236,0.78); font-size: 15.5px; }
 .profile-hero-photo-text .btn-outline { border-color: var(--gold); color: var(--white); }
 @media (max-width: 860px) {
