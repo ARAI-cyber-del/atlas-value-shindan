@@ -326,8 +326,8 @@ nav.main-nav a.current::after {
   height: 100%;
   background-image: url('../images/results-hero-bg.jpg');
   background-repeat: no-repeat;
-  background-size: 155% auto;
-  background-position: 100% center;
+  background-size: 180% auto;
+  background-position: 100% 32%;
   z-index: 1;
 }
 .results-hero-photo::before {
