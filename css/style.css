@@ -262,6 +262,51 @@ nav.main-nav a.current::after {
 .page-hero-visual { max-width: 280px; margin: 0 auto; }
 .page-hero-visual .frame { margin: 0; }
 
+/* ===== Profile photo hero (index.html PROFILE section) ===== */
+.profile-hero-photo {
+  position: relative;
+  background: var(--navy-deep);
+  color: var(--white);
+  padding: 0;
+  overflow: hidden;
+}
+.profile-hero-photo-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.profile-hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    var(--navy-deep) 0%,
+    var(--navy-deep) 36%,
+    rgba(10, 18, 32, 0.55) 50%,
+    rgba(10, 18, 32, 0) 66%);
+  z-index: 2;
+}
+.profile-hero-photo-grid {
+  position: relative;
+  z-index: 3;
+  padding: 112px 0;
+}
+.profile-hero-photo-text { max-width: 500px; }
+.profile-hero-photo-text .eyebrow { color: var(--gold-light); }
+.profile-hero-photo-text h2 { color: var(--white); font-size: 26px; line-height: 1.7; }
+.profile-hero-photo-text p { margin-top: 20px; color: rgba(247,244,236,0.78); font-size: 15.5px; }
+.profile-hero-photo-text .btn-outline { border-color: var(--gold); color: var(--white); }
+@media (max-width: 860px) {
+  .profile-hero-photo-img { position: static; width: 100%; height: 260px; }
+  .profile-hero-photo::before { display: none; }
+  .profile-hero-photo-grid { padding: 48px 0; }
+  .profile-hero-photo-text { max-width: none; }
+}
+
 /* ===== Sections ===== */
 section { padding: 96px 0; }
 section.on-navy { background: var(--navy-deep); color: var(--white); }
