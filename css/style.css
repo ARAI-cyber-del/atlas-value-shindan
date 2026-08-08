@@ -491,6 +491,7 @@ section.on-cream-dim { background: var(--cream-dim); }
 .feature-text .eyebrow { color: var(--gold); }
 .feature-text h2 { font-size: 26px; line-height: 1.7; }
 .feature-text p { margin-top: 20px; color: var(--ink-soft); font-size: 15.5px; }
+.feature-text-full { max-width: 900px; }
 
 /* ===== Brand visual panels (replace person photography) ===== */
 .media-panel {
