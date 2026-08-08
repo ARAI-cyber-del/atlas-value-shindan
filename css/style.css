@@ -486,6 +486,7 @@ section.on-cream-dim { background: var(--cream-dim); }
   gap: 64px;
   align-items: center;
 }
+.feature-grid > * { min-width: 0; }
 .feature-grid.reverse .feature-media { order: 2; }
 .feature-media img { border: 1px solid var(--cream-dim); }
 .feature-text .eyebrow { color: var(--gold); }
