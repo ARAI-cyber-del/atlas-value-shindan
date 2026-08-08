@@ -542,6 +542,7 @@ section.on-cream-dim { background: var(--cream-dim); }
   color: var(--ink);
   font-weight: 600;
   line-height: 1.7;
+  white-space: nowrap;
 }
 .on-navy .service-lead { color: var(--white); }
 .detail-list {
@@ -606,6 +607,7 @@ footer.site-footer {
   .detail-list { grid-template-columns: 1fr; }
   .page-hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .page-hero-visual { max-width: 220px; }
+  .service-lead { white-space: normal; }
   .hero .wrap { min-height: 460px; align-items: flex-start; padding-top: 32px; padding-bottom: 56px; }
   .hero-photo-overlay {
     background: linear-gradient(180deg,
