@@ -438,7 +438,7 @@ nav.main-nav a.current::after {
 .contact-hero-photo-grid {
   position: relative;
   z-index: 3;
-  padding: 112px 0;
+  padding: 64px 0;
 }
 .contact-hero-photo-text { max-width: 620px; }
 .contact-hero-photo-text .eyebrow { color: var(--gold-light); }
