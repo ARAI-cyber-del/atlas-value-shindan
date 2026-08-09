@@ -471,6 +471,8 @@ nav.main-nav a.current::after {
 
 /* ===== Sections ===== */
 section { padding: 96px 0; }
+section.section-tight-top { padding-top: 8px; }
+section.section-tight-bottom { padding-bottom: 24px; }
 section.on-navy { background: var(--navy-deep); color: var(--white); }
 section.on-cream-dim { background: var(--cream-dim); }
 .section-head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
