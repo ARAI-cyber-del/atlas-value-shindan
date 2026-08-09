@@ -6,7 +6,7 @@
 <title>お問い合わせ | Atlas Value</title>
 <meta name="description" content="Atlas Valueへのお問い合わせ・ご相談はこちらから。商品開発の課題や診断のご依頼など、お気軽にご連絡ください。">
 <link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -81,16 +81,38 @@
       <h2>お問い合わせフォーム</h2>
     </div>
     <div class="form-block">
-      <!--
-        ▼ ここにGoogleフォームの埋め込みコードを貼り付けてください。
-        Googleフォーム作成後、フォーム右上の「送信」→「<>」（埋め込みHTML）タブで
-        表示される <iframe ...></iframe> のコードを、下の <div class="form-embed-note"> と
-        入れ替えるだけで反映されます。
-      -->
-      <div class="form-embed-note">
-        Googleフォームの埋め込みコードをここに設置します<br>
-        （<code>&lt;iframe src="https://docs.google.com/forms/..."&gt;&lt;/iframe&gt;</code> に差し替え）
-      </div>
+      <div class="form-error" id="formError" style="display:none;"></div>
+      <form class="contact-form" action="https://smart-ebino-8318.whitesnow.jp/contact-form.php" method="post">
+        <!-- スパム対策用（人には見えない項目、削除しないでください） -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="name">お名前<span class="req">必須</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="field">
+          <label for="company">会社名<span class="opt">任意</span></label>
+          <input type="text" id="company" name="company">
+        </div>
+
+        <div class="field">
+          <label for="email">メールアドレス<span class="req">必須</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="field">
+          <label for="message">ご相談内容<span class="req">必須</span></label>
+          <textarea id="message" name="message" required placeholder="現在の課題や、ご相談したい内容をお書きください。内容が固まっていなくても構いません。"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-solid">送信する</button>
+        </div>
+      </form>
     </div>
 
     <div class="contact-methods">
@@ -152,6 +174,23 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var error = params.get("error");
+  if (!error) return;
+  var box = document.getElementById("formError");
+  if (!box) return;
+  var messages = {
+    required: "お名前・メールアドレス・ご相談内容は必須項目です。ご入力の上、再度送信してください。",
+    email: "メールアドレスの形式が正しくないようです。ご確認の上、再度送信してください。"
+  };
+  box.textContent = messages[error] || "送信内容をご確認の上、再度お試しください。";
+  box.style.display = "block";
+  box.scrollIntoView({ behavior: "smooth", block: "center" });
+})();
+</script>
 
 </body>
 </html>
