@@ -555,7 +555,7 @@ section.on-cream-dim { background: var(--cream-dim); }
 }
 .feature-grid > * { min-width: 0; }
 .feature-grid.reverse .feature-media { order: 2; }
-.feature-media img { border: 1px solid var(--cream-dim); }
+.feature-media img { border: 1px solid var(--cream-dim); width: 100%; height: auto; display: block; }
 .feature-text .eyebrow { color: var(--gold); }
 .feature-text h2 { font-size: 26px; line-height: 1.7; }
 .feature-text p { margin-top: 20px; color: var(--ink-soft); font-size: 15.5px; }
@@ -697,7 +697,7 @@ section.on-cream-dim { background: var(--cream-dim); }
   gap: 64px;
   align-items: start;
 }
-.profile-photo { border: 1px solid var(--cream-dim); }
+.profile-photo { border: 1px solid var(--cream-dim); width: 100%; height: auto; display: block; }
 .profile-name-en { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 17px; letter-spacing: 0.06em; }
 .profile-name { font-size: 30px; margin-top: 8px; }
 .profile-role { margin-top: 10px; color: var(--ink-soft); font-size: 14.5px; }
