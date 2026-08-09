@@ -763,8 +763,10 @@ section.on-cream-dim { background: var(--cream-dim); }
 }
 .contact-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
 .contact-method { border: 1px solid var(--cream-dim); padding: 26px 28px; }
-.contact-method .label { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 14px; }
+.contact-method .label { font-family: var(--font-en); font-style: italic; color: var(--navy-deep); font-size: 26px; font-weight: 600; }
 .contact-method .value { margin-top: 8px; font-size: 16px; }
+.contact-method .value a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.contact-method .value a:hover { color: var(--gold); }
 
 .legal-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
 .legal-table th, .legal-table td { text-align: left; padding: 16px 0; border-bottom: 1px solid var(--cream-dim); font-size: 14.5px; vertical-align: top; }
