@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
-/* redeploy */
+
 /* ===== Design tokens ===== */
 :root {
   --navy-deep: #0a1220;
@@ -575,8 +575,9 @@ section.on-cream-dim { background: var(--cream-dim); }
 }
 .media-panel.on-navy-panel { background: var(--navy-deep); border-color: var(--navy-line); }
 .media-panel.media-panel-flat { background: transparent; border: none; }
-.media-panel .panel-mark { width: 132px; height: auto; }
+.media-panel .panel-mark { width: 132px; height: auto; border: none; }
 .media-panel .panel-mark.panel-mark-lg { width: 264px; }
+.media-panel .panel-logotype { margin-top: 22px; width: 220px; height: auto; border: none; }
 .media-panel .panel-caption {
   margin-top: 22px;
   font-family: var(--font-en);
