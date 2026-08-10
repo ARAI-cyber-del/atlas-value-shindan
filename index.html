@@ -211,5 +211,39 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  function report(){
+    var vw = window.innerWidth;
+    var offenders = [];
+    document.querySelectorAll('body *').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.right > vw + 1 || r.left < -1) {
+        offenders.push({
+          tag: el.tagName,
+          cls: el.className && typeof el.className === 'string' ? el.className : '',
+          right: Math.round(r.right),
+          left: Math.round(r.left),
+          width: Math.round(r.width)
+        });
+      }
+    });
+    var box = document.createElement('div');
+    box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:red;color:#fff;font-size:11px;padding:8px;max-height:50vh;overflow:auto;font-family:monospace;';
+    if (offenders.length === 0) {
+      box.textContent = '幅チェック: はみ出し要素なし。画面幅=' + vw + 'px / ページ全体幅=' + document.documentElement.scrollWidth + 'px';
+    } else {
+      var lines = ['画面幅=' + vw + 'px / ページ全体幅=' + document.documentElement.scrollWidth + 'px（はみ出し' + offenders.length + '件）'];
+      offenders.slice(0,8).forEach(function(o){
+        lines.push('<' + o.tag + ' class="' + o.cls + '"> right=' + o.right + ' left=' + o.left + ' width=' + o.width);
+      });
+      box.textContent = lines.join(' | ');
+    }
+    document.body.appendChild(box);
+  }
+  window.addEventListener('load', report);
+})();
+</script>
+
 </body>
 </html>
