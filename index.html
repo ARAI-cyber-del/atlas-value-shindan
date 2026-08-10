@@ -6,7 +6,7 @@
 <title>Atlas Value（アトラスバリュー）| 価値ある挑戦を羅針盤となって見極め支える。</title>
 <meta name="description" content="Atlas Valueは、ヘルスケア用品・健康雑貨の商品開発に40年携わってきた経験をもとに、中小企業の商品開発診断を伴走支援するコンサルティングです。">
 <link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
 
@@ -210,43 +210,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-(function(){
-  function report(){
-    var vw = window.innerWidth;
-    var all = [];
-    document.querySelectorAll('body *').forEach(function(el){
-      var r = el.getBoundingClientRect();
-      all.push({
-        tag: el.tagName,
-        cls: el.className && typeof el.className === 'string' ? el.className : '',
-        right: Math.round(r.right),
-        left: Math.round(r.left),
-        width: Math.round(r.width)
-      });
-    });
-    all.sort(function(a,b){ return b.right - a.right; });
-    var bodyCS = getComputedStyle(document.body);
-    var htmlCS = getComputedStyle(document.documentElement);
-    var box = document.createElement('div');
-    box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:red;color:#fff;font-size:10px;padding:8px;max-height:60vh;overflow:auto;font-family:monospace;';
-    var lines = [];
-    lines.push('window.innerWidth=' + vw);
-    lines.push('html.scrollWidth=' + document.documentElement.scrollWidth + ' body.scrollWidth=' + document.body.scrollWidth);
-    lines.push('html.offsetWidth=' + document.documentElement.offsetWidth + ' body.offsetWidth=' + document.body.offsetWidth);
-    lines.push('body margin=' + bodyCS.marginLeft + '/' + bodyCS.marginRight + ' padding=' + bodyCS.paddingLeft + '/' + bodyCS.paddingRight + ' transform=' + bodyCS.transform + ' display=' + bodyCS.display + ' textAlign=' + bodyCS.textAlign);
-    lines.push('html transform=' + htmlCS.transform + ' overflowX=' + htmlCS.overflowX);
-    lines.push('--- TOP 6 by right edge ---');
-    all.slice(0,6).forEach(function(o){
-      lines.push('<' + o.tag + ' .' + o.cls + '> L=' + o.left + ' R=' + o.right + ' W=' + o.width);
-    });
-    box.textContent = lines.join(' || ');
-    document.body.appendChild(box);
-  }
-  window.addEventListener('load', report);
-})();
-</script>
 
 </body>
 </html>
