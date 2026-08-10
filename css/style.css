@@ -869,7 +869,8 @@ footer.site-footer {
   .value-item { border-right: none; border-bottom: 1px solid var(--navy-line); }
   .values-row-photo { grid-template-columns: repeat(2, 1fr); }
   .value-photo-card { border-right: none; border-bottom: 1px solid var(--navy-line); }
-  .note-em { white-space: normal; }
+  .note-em { white-space: normal; overflow-wrap: anywhere; }
+  .note { word-break: normal; overflow-wrap: anywhere; }
   .note-br { display: none; }
   .br-desktop { display: none; }
   section { padding: 56px 0; }
