@@ -842,7 +842,7 @@ footer.site-footer {
 }
 .footer-top { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid var(--navy-line); }
 .footer-brand img { height: 30px; margin-bottom: 18px; }
-.footer-brand p { font-size: 13.5px; line-height: 1.9; max-width: 34ch; }
+.footer-brand p { font-size: 13.5px; line-height: 1.9; max-width: 46ch; }
 .footer-col h5 { color: var(--white); font-family: var(--font-body); font-weight: 500; font-size: 13.5px; letter-spacing: 0.08em; margin-bottom: 18px; }
 .footer-col a, .footer-col span { display: block; font-size: 13.5px; margin-bottom: 12px; color: rgba(247,244,236,0.65); }
 .footer-col a:hover { color: var(--gold-light); }
