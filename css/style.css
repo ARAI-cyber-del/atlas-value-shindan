@@ -904,4 +904,49 @@ footer.site-footer {
   outline-offset: 3px;
 }
 
+/* ===== Fee page ===== */
+.fee-intro-box {
+  background: var(--white);
+  border: 1px solid var(--cream-dim);
+  border-left: 3px solid var(--gold);
+  padding: 40px 44px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.fee-intro-box .fee-intro-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.fee-intro-box h3 { font-size: 20px; }
+.fee-intro-box .fee-price { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 20px; }
+.fee-intro-box p { margin-top: 16px; font-size: 14.5px; color: var(--ink-soft); }
+.fee-card .cat-icon { display: block; }
+.fee-card .fee-price {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-en);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 19px;
+  letter-spacing: 0.02em;
+}
+.fee-card h3 { margin-top: 10px; }
+.fee-card .fee-examples {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.fee-card .fee-examples li {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 8px 0;
+  border-top: 1px solid var(--cream-dim);
+}
+.fee-card .fee-examples li:first-child { border-top: none; }
+@media (max-width: 640px) {
+  .fee-intro-box { padding: 32px 26px; }
+}
+
 /* redeploy trigger */
