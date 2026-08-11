@@ -894,6 +894,11 @@ footer.site-footer {
   .card-grid-4 { grid-template-columns: 1fr; }
 }
 
+.br-phone { display: none; }
+@media (max-width: 640px) {
+  .br-phone { display: inline; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
