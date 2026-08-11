@@ -910,7 +910,7 @@ footer.site-footer {
   border: 1px solid var(--cream-dim);
   border-left: 3px solid var(--gold);
   padding: 40px 44px;
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
 }
 .fee-intro-box .fee-intro-head {
@@ -922,15 +922,20 @@ footer.site-footer {
 .fee-intro-box h3 { font-size: 20px; }
 .fee-intro-box .fee-price { font-family: var(--font-en); font-style: italic; color: var(--gold); font-size: 20px; }
 .fee-intro-box p { margin-top: 16px; font-size: 14.5px; color: var(--ink-soft); }
+.fee-intro-nowrap { white-space: nowrap; }
+@media (max-width: 950px) {
+  .fee-intro-nowrap { white-space: normal; }
+}
 .fee-card .cat-icon { display: block; }
 .fee-card .fee-price {
   display: block;
   margin-top: 12px;
-  font-family: var(--font-en);
-  font-style: italic;
+  font-family: "Meiryo", "Hiragino Kaku Gothic ProN", var(--font-body), sans-serif;
+  font-style: normal;
+  font-weight: 600;
   color: var(--gold);
   font-size: 19px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 .fee-card h3 { margin-top: 10px; }
 .fee-card .fee-examples {
