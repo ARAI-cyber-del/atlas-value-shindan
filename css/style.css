@@ -885,7 +885,7 @@ footer.site-footer {
   .card-grid-4 { grid-template-columns: 1fr 1fr; }
   .case { grid-template-columns: 1fr; }
   .profile-hero { grid-template-columns: 1fr; }
-  .profile-photo { max-width: 280px; }
+  .profile-photo { max-width: 280px; margin: 0 auto; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .contact-methods { grid-template-columns: 1fr; }
   .legal-table th { width: 130px; }
@@ -893,6 +893,11 @@ footer.site-footer {
 
 @media (max-width: 560px) {
   .card-grid-4 { grid-template-columns: 1fr; }
+}
+
+.br-mobile { display: none; }
+@media (max-width: 960px) {
+  .br-mobile { display: inline; }
 }
 
 .br-phone { display: none; }
