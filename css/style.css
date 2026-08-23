@@ -972,4 +972,7 @@ footer.site-footer {
   .ai-approach-h2 { font-size: 22px; line-height: 1.55; }
 }
 
+/* ===== fee.html 05 従業員教育・研修（幅広カード） ===== */
+.fee-card-wide { grid-column: 1 / -1; }
+
 /* redeploy trigger */
