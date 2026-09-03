@@ -982,9 +982,19 @@ footer.site-footer {
 @media (max-width: 640px) {
   .mobile-only-btn { display: inline-block; }
 }
-.episode-picker { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; margin: 32px auto 0; }
-.episode-btn { font-family: inherit; font-size: 13.5px; letter-spacing: 0.04em; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(20,26,45,0.18); background: var(--white); color: var(--ink); cursor: pointer; transition: all .2s ease; }
-.episode-btn:hover { border-color: var(--gold); color: var(--gold); }
-.episode-btn.active { background: var(--navy-deep); border-color: var(--navy-deep); color: var(--white); }
+.episode-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 900px; margin: 32px auto 0; }
+@media (max-width: 860px) {
+  .episode-picker { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .episode-picker { grid-template-columns: 1fr; }
+}
+.episode-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; font-family: inherit; padding: 14px 18px; border-radius: 6px; border: 1px solid rgba(20,26,45,0.15); background: var(--white); color: var(--ink); cursor: pointer; transition: all .2s ease; }
+.episode-btn:hover { border-color: var(--gold); }
+.episode-btn .ep-num { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: var(--gold); }
+.episode-btn .ep-sub { font-size: 13.5px; line-height: 1.5; color: var(--ink); }
+.episode-btn.active { background: var(--navy-deep); border-color: var(--navy-deep); }
+.episode-btn.active .ep-num { color: var(--gold); }
+.episode-btn.active .ep-sub { color: var(--white); }
 
 /* redeploy trigger */
