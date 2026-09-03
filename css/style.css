@@ -982,5 +982,9 @@ footer.site-footer {
 @media (max-width: 640px) {
   .mobile-only-btn { display: inline-block; }
 }
+.episode-picker { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 900px; margin: 32px auto 0; }
+.episode-btn { font-family: inherit; font-size: 13.5px; letter-spacing: 0.04em; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(20,26,45,0.18); background: var(--white); color: var(--ink); cursor: pointer; transition: all .2s ease; }
+.episode-btn:hover { border-color: var(--gold); color: var(--gold); }
+.episode-btn.active { background: var(--navy-deep); border-color: var(--navy-deep); color: var(--white); }
 
 /* redeploy trigger */
