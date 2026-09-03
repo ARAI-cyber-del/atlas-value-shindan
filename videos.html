@@ -6,7 +6,7 @@
 <title>動画で学ぶ | Atlas Value</title>
 <meta name="description" content="40年の商品開発で学んだ「価値の種」の見つけ方。Atlas Value代表が語る、全10話の動画シリーズをご紹介します。">
 <link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="css/style.css?v=24">
+<link rel="stylesheet" href="css/style.css?v=25">
 </head>
 <body>
 
@@ -40,46 +40,54 @@
 <section>
   <div class="wrap">
     <div class="video-embed">
-      <iframe
-        id="video-player"
-        src="https://www.youtube.com/embed/videoseries?list=PLcfbpXumrV7Y&index=1&cc_load_policy=0"
-        title="40年の商品開発で学んだ「価値の種」の見つけ方 再生リスト"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
+      <div id="video-player"></div>
     </div>
     <div style="text-align:center; margin-top:20px;">
       <a href="https://www.youtube.com/playlist?list=PLcfbpXumrV7Y" target="_blank" rel="noopener" class="btn btn-outline mobile-only-btn" style="border-color:var(--gold); color:var(--ink);">YouTubeアプリ／YouTubeで見る →</a>
     </div>
 
     <div class="episode-picker" id="episode-picker">
-      <button type="button" class="episode-btn active" data-index="1">チャネル紹介</button>
-      <button type="button" class="episode-btn" data-index="2">第1話</button>
-      <button type="button" class="episode-btn" data-index="3">第2話</button>
-      <button type="button" class="episode-btn" data-index="4">第3話</button>
-      <button type="button" class="episode-btn" data-index="5">第4話</button>
-      <button type="button" class="episode-btn" data-index="6">第5話</button>
-      <button type="button" class="episode-btn" data-index="7">第6話</button>
-      <button type="button" class="episode-btn" data-index="8">第7話</button>
-      <button type="button" class="episode-btn" data-index="9">第8話</button>
-      <button type="button" class="episode-btn" data-index="10">第9話</button>
-      <button type="button" class="episode-btn" data-index="11">第10話</button>
+      <button type="button" class="episode-btn active" data-index="0">チャネル紹介</button>
+      <button type="button" class="episode-btn" data-index="1">第1話</button>
+      <button type="button" class="episode-btn" data-index="2">第2話</button>
+      <button type="button" class="episode-btn" data-index="3">第3話</button>
+      <button type="button" class="episode-btn" data-index="4">第4話</button>
+      <button type="button" class="episode-btn" data-index="5">第5話</button>
+      <button type="button" class="episode-btn" data-index="6">第6話</button>
+      <button type="button" class="episode-btn" data-index="7">第7話</button>
+      <button type="button" class="episode-btn" data-index="8">第8話</button>
+      <button type="button" class="episode-btn" data-index="9">第9話</button>
+      <button type="button" class="episode-btn" data-index="10">第10話</button>
     </div>
   </div>
 </section>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
+var ytPlayer;
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('video-player', {
+    playerVars: {
+      listType: 'playlist',
+      list: 'PLcfbpXumrV7Y',
+      index: 0,
+      cc_load_policy: 0,
+      rel: 0
+    }
+  });
+}
 (function () {
-  var player = document.getElementById('video-player');
   var buttons = document.querySelectorAll('.episode-btn');
+  var embedBox = document.querySelector('.video-embed');
   buttons.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var idx = btn.getAttribute('data-index');
-      player.src = 'https://www.youtube.com/embed/videoseries?list=PLcfbpXumrV7Y&index=' + idx + '&autoplay=1&cc_load_policy=0';
+      var idx = parseInt(btn.getAttribute('data-index'), 10);
+      if (ytPlayer && typeof ytPlayer.playVideoAt === 'function') {
+        ytPlayer.playVideoAt(idx);
+      }
       buttons.forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
-      player.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      embedBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 })();
