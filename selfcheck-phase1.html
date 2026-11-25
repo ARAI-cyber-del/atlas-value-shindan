@@ -214,6 +214,85 @@
     border-radius:50%;
     flex-shrink:0;
   }
+  .intro{
+    background:#fff;
+    border:1px solid #ddd;
+    border-left:5px solid var(--navy);
+    border-radius:6px;
+    padding:16px 20px;
+    margin-bottom:18px;
+    font-size:14px;
+  }
+  .intro h2{
+    font-size:16px;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+  .intro dl{ margin:0; }
+  .intro dt{ font-weight:bold; color:var(--navy); margin-top:8px; }
+  .intro dt:first-child{ margin-top:0; }
+  .intro dd{ margin:2px 0 0; }
+  .intro p{ margin:0 0 8px; }
+  .intro p:last-child{ margin-bottom:0; }
+  .intro .howto{ color:var(--gray); font-size:13px; }
+  .targetgrid{
+    display:grid;
+    grid-template-columns:7.5em 1fr;
+    gap:10px 12px;
+    align-items:center;
+  }
+  .targetgrid label.rowlabel{ font-weight:bold; color:var(--navy); font-size:13.5px; }
+  .targetgrid input[type=text]{
+    width:100%;
+    box-sizing:border-box;
+    padding:7px 10px;
+    border:1px solid #bbb;
+    border-radius:5px;
+    font:inherit;
+    font-size:14px;
+  }
+  .targetgrid input[type=text]:focus{ outline:2px solid var(--navy); outline-offset:1px; }
+  .typechoices{ display:flex; flex-wrap:wrap; gap:6px 16px; font-size:14px; }
+  .typechoices label{ cursor:pointer; }
+  .targetsummary{
+    margin-top:12px;
+    font-size:14px;
+    background:rgba(255,255,255,0.08);
+    padding:10px 16px;
+    border-radius:6px;
+  }
+  .savebar{
+    margin-top:24px;
+    text-align:center;
+  }
+  .savebar button{
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    padding:12px 28px;
+    font:inherit;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+  }
+  .savebar button:hover{ background:#2B4F7E; }
+  .savebar button:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  .savebar p{ font-size:12.5px; color:var(--gray); margin:8px 0 0; }
+  @media (max-width:560px){
+    .targetgrid{ grid-template-columns:1fr; gap:4px; }
+    .targetgrid .typechoices, .targetgrid input[type=text]{ margin-bottom:8px; }
+  }
+  @page{ size:A4; margin:12mm; }
+  @media print{
+    body{ background:#fff; max-width:none; padding:0; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .progress, .savebar, #beforeAnswer{ display:none !important; }
+    .item, .catfooter, #finalSummary, .intro{ break-inside:avoid; }
+    .catheader{ break-after:avoid; }
+    #finalSummary{ break-before:page; margin-top:0; }
+    .targetgrid input[type=text]{ border:none; border-bottom:1px solid #999; border-radius:0; padding-left:0; }
+  }
   .note{
     font-size:12px;
     color:#999;
@@ -235,9 +314,44 @@
 <body>
 
 <h1>フェーズⅠ　商品開発 自己診断ツール【発想段階・全11カテゴリ55項目】</h1>
-<div class="lead">
-各項目、選択肢をクリックしてください。点数に応じて診断コメントが表示され、カテゴリごと・全体のレーダーチャートが自動作成されます。
-</div>
+<section class="intro" id="aboutDiagnosis">
+  <h2>この診断について</h2>
+  <dl>
+    <dt>目的</dt>
+    <dd>商品開発の発想段階における強みと、補強すべき弱点を明確にすること。</dd>
+    <dt>得られるもの</dt>
+    <dd>カテゴリ別・全体のレーダーチャートと項目ごとのコメントから、優先して見直すべき観点と、補強すべき観点についての示唆が得られます。</dd>
+    <dt>活かし方</dt>
+    <dd>結果をチームで共有し、判断の根拠を話し合う材料として。また、一定期間後に再診断し、変化を確認する振り返りとして。</dd>
+  </dl>
+</section>
+
+<section class="intro" id="beforeAnswer">
+  <h2>回答の前に</h2>
+  <p>各項目、実際の取り組みを振り返って答えてください。「やっているつもり」ではなく、根拠を示せるかどうかで判断します。</p>
+  <p>1項目あたり30秒以内を目安にしてください。考え込むより、具体的な場面や資料がすぐに思い浮かぶかどうかが判断の手がかりになります（時間制限はありません。全体で30分程度です）。</p>
+  <p>2つの段階で迷ったときは、低いほうを選んでください。</p>
+  <p class="howto">各項目の選択肢をクリックすると、点数に応じた診断コメントが表示され、カテゴリごと・全体のレーダーチャートが自動作成されます。</p>
+</section>
+
+<section class="intro" id="targetSection">
+  <h2>診断の対象</h2>
+  <p class="howto">回答を始める前に、どの対象を想定して答えるかを決めてください。</p>
+  <div class="targetgrid">
+    <span class="rowlabel" style="font-weight:bold;color:var(--navy);font-size:13.5px;">診断日</span>
+    <span id="diagDate"></span>
+    <label class="rowlabel" for="respondentName">回答者名</label>
+    <input type="text" id="respondentName" placeholder="任意">
+    <span class="rowlabel" style="font-weight:bold;color:var(--navy);font-size:13.5px;">対象の種類</span>
+    <div class="typechoices" role="radiogroup" aria-label="対象の種類">
+      <label><input type="radio" name="targetType" value="特定の案件"> 特定の案件</label>
+      <label><input type="radio" name="targetType" value="ブランド"> ブランド</label>
+      <label><input type="radio" name="targetType" value="日頃の業務全体"> 日頃の業務全体</label>
+    </div>
+    <label class="rowlabel" for="targetName">対象の名称</label>
+    <input type="text" id="targetName" placeholder="例：〇〇シリーズ新商品の企画">
+  </div>
+</section>
 <div class="progress" id="progress">0 / 55 項目 回答済み</div>
 
 <div id="categories"></div>
@@ -259,6 +373,12 @@
     <canvas id="finalRadar" width="460" height="460"></canvas>
   </div>
   <div id="finalSummaryComment">全項目に回答すると、ここに総合診断が表示されます。</div>
+  <div class="targetsummary" id="targetSummary"></div>
+</div>
+
+<div class="savebar">
+  <button type="button" id="savePdf">結果をPDFで保存</button>
+  <p>印刷画面が開きます。送信先（プリンター）で「PDFに保存」を選んで保存してください。</p>
 </div>
 
 <p class="note">Atlas Value｜商品開発 自己診断ツール（フェーズⅠ：発想段階）</p>
@@ -664,6 +784,8 @@ const categories = [
 ];
 
 // ---------- Build DOM ----------
+// 関連記事のURLがそろうまで、記事リンクは非表示（true にすると表示）
+const SHOW_ARTICLE_LINKS = false;
 const allScores = {}; // key: "1-1" etc -> score
 const container = document.getElementById("categories");
 const TOTAL_ITEMS = categories.reduce((a,c)=>a+c.items.length,0);
@@ -703,7 +825,7 @@ categories.forEach(cat => {
         const tier = score <= 2 ? "bad" : (score === 3 ? "mid" : "good");
         const commentBox = document.getElementById(`comment-${item.no}`);
         commentBox.className = `comment show ${tier}`;
-        commentBox.innerHTML = item.comments[tier];
+        commentBox.innerHTML = SHOW_ARTICLE_LINKS ? item.comments[tier] : item.comments[tier].replace(/<br><a href="#">[\s\S]*?<\/a>/g, "");
 
         updateCategoryFooter(cat);
         updateProgress();
@@ -908,6 +1030,37 @@ function updateFinalSummary(){
 
 drawFinalRadar(new Array(categories.length).fill(0));
 updateProgress();
+
+// ---------- 診断の対象 ----------
+(function(){
+  const d = new Date();
+  document.getElementById("diagDate").textContent = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+})();
+function updateTargetSummary(){
+  const name = document.getElementById("respondentName").value.trim();
+  const typeEl = document.querySelector('input[name="targetType"]:checked');
+  const tname = document.getElementById("targetName").value.trim();
+  const esc = t => t.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const parts = [];
+  parts.push(`診断日：${document.getElementById("diagDate").textContent}`);
+  if (name) parts.push(`回答者：${esc(name)}`);
+  let target = typeEl ? typeEl.value : "未設定";
+  if (tname) target += `（${esc(tname)}）`;
+  parts.push(`診断の対象：${target}`);
+  document.getElementById("targetSummary").innerHTML = parts.join("<br>");
+}
+["respondentName","targetName"].forEach(id => document.getElementById(id).addEventListener("input", updateTargetSummary));
+document.querySelectorAll('input[name="targetType"]').forEach(r => r.addEventListener("change", updateTargetSummary));
+updateTargetSummary();
+
+// ---------- PDF保存 ----------
+document.getElementById("savePdf").addEventListener("click", () => {
+  const answered = Object.keys(allScores).length;
+  if (answered < TOTAL_ITEMS){
+    if (!confirm(`未回答の項目が${TOTAL_ITEMS - answered}件あります。このまま保存しますか？`)) return;
+  }
+  window.print();
+});
 </script>
 </body>
 </html>
